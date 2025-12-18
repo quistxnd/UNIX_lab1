@@ -60,7 +60,7 @@ case "$SRC" in
 esac
 
 if [ $RESULT -ne 0 ]; then
-    echo "Ошибка сборки" >&2
+    echo "Build error" >&2
     exit 7
 fi
 
@@ -74,5 +74,5 @@ case "$SRC" in
         ;;
 esac
 
-echo "The assembly was successful!"
+echo "The build was successful!"
 exit 0
