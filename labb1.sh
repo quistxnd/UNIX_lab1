@@ -54,7 +54,7 @@ case "$SRC" in
         fi
         ;;
     *)
-        echo "Неподдерживаемый тип файла" >&2
+        echo "Unsupported file type" >&2
         exit 6
         ;;
 esac
