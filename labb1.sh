@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Argument checking
 if [ $# -ne 1 ]; then
     echo "Using: $0 <source_file>" >&2
     exit 1
@@ -14,7 +13,8 @@ if [ ! -f "$SRC" ]; then
 fi
 
 dirname=$(pwd)
-# Looking for the line with Output:
+
+
 OUTPUT=$(grep -m1 'Output:' "$SRC" | sed 's/.*Output:[ ]*//')
 
 if [ -z "$OUTPUT" ]; then
@@ -22,7 +22,7 @@ if [ -z "$OUTPUT" ]; then
     exit 3
 fi
 
-# create a temporary directory
+
 TMPDIR=$(mktemp -d)
 if [ ! -d "$TMPDIR" ]; then
     echo "Failed to create temporary directory" >&2
@@ -35,7 +35,7 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-# Copying file from temporary directory
+
 cp "$SRC" "$TMPDIR" || exit 5
 cd "$TMPDIR" || exit 5
 
